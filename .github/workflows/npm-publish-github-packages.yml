@@ -1,0 +1,27 @@
+name: demo_pipeline
+on:
+  push:
+    branches:[main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+
+      - name: use node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.12.2
+
+      - name: install dependency
+        run: npm i
+
+      - name: build project
+        run: npm run build
+
+      - name: deploy
+        run: npm start
