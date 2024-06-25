@@ -25,6 +25,12 @@ jobs:
         id: ecr-login
         uses: aws-actions/amazon-ecr-login@v1
 
+      - name: Ensure ECR Repository Exists
+        uses: int128/create-ecr-repository-action@v1
+        id: ecr-hellocondo-prd
+        with:
+          repository: ${{ secrets.ECR_REPOSITORY_NAME_DEV }}
+
       - name: Build Docker image
         run: |
           IMAGE_TAG=${{ secrets.AWS_ACCOUNT_ID_DEV }}.dkr.ecr.${{ secrets.AWS_REGION_DEV }}.amazonaws.com/${{ secrets.ECR_REPOSITORY_NAME_DEV }}:${GITHUB_SHA}
