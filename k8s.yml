@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: demo
 spec:
-  replica: 3
+  replicas: 3
   selector:
     matchLables: 
       name: demo
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: condo-admin
-          image: apurvbidkar/demo:latest
+          image: 851725403957.dkr.ecr.us-east-1.amazonaws.com/demo:83788227f113a75e459c7346801a5cbf0e4cc618
           ports:
           - containerPort: 3003
 
